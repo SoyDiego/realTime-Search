@@ -1,44 +1,42 @@
-import React from 'react'
+import React, { useState } from "react";
 import List from "./List";
 import styled from "@emotion/styled";
 
 const Formulario = styled.form`
-    width: 50%;
-    background-color: darkorange;
-    text-align: center;
-    border: 2px solid #000000;
-
-`
+	width: 50%;
+	background-color: darkorange;
+	text-align: center;
+	border: 2px solid #000000;
+	@media (min-width: 320px) {
+		width: 90%;
+	}
+`;
 const Input = styled.input`
 	border: none;
 	background-color: transparent;
 	border-bottom: 2px solid #000000;
-    margin-top: 2rem;
-    width: 300px;
+	margin-top: 2rem;
+	text-align: center;
 `;
-const Button = styled.button`
-    background-color: #000000;
-    border: none;
-    padding: .5rem;
-    margin: 0 .5rem;
-    color: darkorange;
-    font-weight: bold;
-    cursor: pointer;
-`;
+
 const Form = () => {
+	const [fruit, setFruit] = useState("");
 
-    const handleSubmit = e => {
-        e.preventDefault();
-    }
+	const handleOnChange = (e) => {
+		setFruit(e.target.value);
+	};
 
-    return (
-        <Formulario onSubmit={handleSubmit}>
-            <Input type="text" placeholder="Search something..."/>
-            <Button type="submit">Filter list!</Button>
-            <List/>
-            
-        </Formulario>
-    )
-}
+	return (
+		<Formulario>
+			<Input
+				type="text"
+				placeholder="Search something..."
+				value={fruit}
+				onChange={handleOnChange}
+			/>
+			<List fruit={fruit} setFruit={setFruit} />
+		</Formulario>
+	);
+};
 
-export default Form
+export default Form;
