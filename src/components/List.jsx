@@ -9,18 +9,25 @@ const Ul = styled.ul`
 const Li = styled.li`
 	display: inline-block;
 	padding: 1rem;
+	@media (max-width: 480px) {
+		padding: .2rem;
+	}
 `;
 
-const List = ({ fruit }) => {
+const List = ({ fruit, setError }) => {
 	const [allFruits, setAllFruits] = useState([]);
 
 	useEffect(() => {
 		(async () => {
-			const url = await fetch("https://www.fruitmap.org/api/trees");
-			const fruits = await url.json();
-			setAllFruits(fruits);
+			try {
+				const url = await fetch("https://www.fruitmap.org/api/trees");
+				const fruits = await url.json();
+				setAllFruits(fruits);
+			} catch (error) {
+				setError(true);
+			}
 		})();
-	}, []);
+	}, [setError]);
 
 	const filteredFruit = allFruits.filter((fruitFiltered) =>
 		RegExp(fruit, "gi").test(fruitFiltered.name.toLowerCase())

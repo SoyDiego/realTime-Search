@@ -11,7 +11,7 @@ const Container = styled.main`
 	align-items: center;
 	justify-content: center;
 	@media (min-width: 320px) {
-		height: 100%;
+		height: 100vh;
 	}
 	@media (min-width: 480px) {
 		height: 100vh;

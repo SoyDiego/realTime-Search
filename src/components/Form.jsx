@@ -5,7 +5,10 @@ import styled from "@emotion/styled";
 const Formulario = styled.form`
 	width: 50%;
 	background-color: darkorange;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	border: 2px solid #000000;
 	@media (min-width: 320px) {
 		width: 90%;
@@ -28,23 +31,44 @@ const Input = styled.input`
 	}
 `;
 
+const Error = styled.div`
+	width: 50%;
+	padding: 2rem;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	margin: 2rem;
+	background-color: #ff6961;
+`;
+
 const Form = () => {
 	const [fruit, setFruit] = useState("");
+	const [error, setError] = useState(false);
 
 	const handleOnChange = (e) => {
 		setFruit(e.target.value);
 	};
 
 	return (
-		<Formulario>
-			<Input
-				type="text"
-				placeholder="Search something..."
-				value={fruit}
-				onChange={handleOnChange}
-			/>
-			<List fruit={fruit} setFruit={setFruit} />
-		</Formulario>
+		<>
+			{error ? (
+				<Error>Something went wrong, sorry... :(</Error>
+			) : (
+				<Formulario>
+					<Input
+						type="text"
+						placeholder="Search something..."
+						value={fruit}
+						onChange={handleOnChange}
+					/>
+					<List
+						fruit={fruit}
+						setFruit={setFruit}
+						setError={setError}
+					/>
+				</Formulario>
+			)}
+		</>
 	);
 };
 
