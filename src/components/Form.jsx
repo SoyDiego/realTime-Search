@@ -17,6 +17,15 @@ const Input = styled.input`
 	border-bottom: 2px solid #000000;
 	margin-top: 2rem;
 	text-align: center;
+	@media (min-width: 480px) {
+		width: 70%;
+	}
+	@media (min-width: 768px) {
+		width: 40%;
+	}
+	@media (min-width: 1024px) {
+		width: 30%;
+	}
 `;
 
 const Form = () => {

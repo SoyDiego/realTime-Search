@@ -10,6 +10,12 @@ const Container = styled.main`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	@media (min-width: 320px) {
+		height: 100%;
+	}
+	@media (min-width: 480px) {
+		height: 100vh;
+	}
 `;
 
 function App() {
