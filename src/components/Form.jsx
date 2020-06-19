@@ -40,7 +40,10 @@ const Error = styled.div`
 	margin: 2rem;
 	background-color: #ff6961;
 `;
-
+const Title = styled.h1`
+	font-size: 24px;
+	text-align: center;
+`
 const Form = () => {
 	const [fruit, setFruit] = useState("");
 	const [error, setError] = useState(false);
@@ -55,6 +58,7 @@ const Form = () => {
 				<Error>Something went wrong, sorry... :(</Error>
 			) : (
 				<Formulario>
+					<Title>- Filter elements fetching from API -</Title>
 					<Input
 						type="text"
 						placeholder="Search something..."
