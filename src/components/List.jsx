@@ -35,7 +35,7 @@ const List = ({ fruit, setError }) => {
 
 	return (
 		<Ul>
-			{filteredFruit[0] !== undefined
+			{filteredFruit
 				? filteredFruit.map((fruitFiltered) => (
 						<Li key={fruitFiltered.id}>{fruitFiltered.name}</Li>
 				  ))
