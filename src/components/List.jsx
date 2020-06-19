@@ -10,7 +10,7 @@ const Li = styled.li`
 	display: inline-block;
 	padding: 1rem;
 	@media (max-width: 480px) {
-		padding: .2rem;
+		padding: 0.2rem;
 	}
 `;
 
@@ -34,15 +34,20 @@ const List = ({ fruit, setError }) => {
 	);
 
 	return (
-		<Ul>
-			{filteredFruit
-				? filteredFruit.map((fruitFiltered) => (
-						<Li key={fruitFiltered.id}>{fruitFiltered.name}</Li>
-				  ))
-				: allFruits.map((fruit) => (
-						<Li key={fruit.id}>{fruit.name}</Li>
-				  ))}
-		</Ul>
+		<>
+			<Ul>
+				{filteredFruit
+					? filteredFruit.map((fruitFiltered) => (
+							<Li key={fruitFiltered.id}>{fruitFiltered.name}</Li>
+					  ))
+					: allFruits.map((fruit) => (
+							<Li key={fruit.id}>{fruit.name}</Li>
+					  ))}
+				{filteredFruit.length === 0 && fruit !== "" && (
+					<Li>Sorry, nothing to show with <strong>{fruit}</strong></Li>
+				)}
+			</Ul>
+		</>
 	);
 };
 
